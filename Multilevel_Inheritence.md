@@ -1,47 +1,57 @@
-# Arithmetic Operations Using Multiple Inheritance in Python
+# Multilevel Inheritance Example in Python
 
-This Python program demonstrates **multiple inheritance** by performing basic arithmetic operations — Addition, Subtraction, and Division — using three classes.
+This Python project demonstrates the concept of **Multilevel Inheritance** to collect and display the **name**, **age**, and **location** of a person.
 
 ## 🎯 Aim
 
-To write a Python program to calculate **Add, Sub & Division** using **Multiple Inheritance**.
+To write a Python program that uses multilevel inheritance to get and display a person’s name, age, and location.
 
 ## 🧠 Algorithm
 
-1. **Define `Calculation1` class**
-   - Contains `Summation(a, b)` method to return the sum of two numbers.
-2. **Define `Calculation2` class**
-   - Contains `Subtraction(a, b)` method to return the difference of two numbers.
-3. **Define `Derived` class**
-   - Inherits from both `Calculation1` and `Calculation2`.
-   - Contains `Division(a, b)` method to return the division result.
-4. **Input**
-   - Prompt the user to enter two numbers.
-5. **Process**
-   - Create an object of the `Derived` class.
-   - Call `Summation`, `Subtraction`, and `Division` methods.
-6. **Output**
-   - Display the results of the three operations.
+1. **Parent Class**  
+   - `__init__(name)` initializes the `name` attribute.  
+   - `getName()` returns the `name`.
 
-## 💻 Program 
-~~~
-class Calculation1:  
-    def div(self,a,b):  
-        return a/b;  
-class Calculation2:  
-    def sub(self,a,b):  
-        return a-b;  
-class Derived(Calculation1,Calculation2):  
-    def Mul(self,a,b):  
-        return a*b;  
-a=int(input())
-b=int(input())
-d = Derived()  
-print(d.div(a,b))  
-print(d.sub(a,b))  
-print(d.Mul(a,b))
-~~~
-## Output Example
+2. **Child Class (inherits Parent)**  
+   - `__init__(name, age)` initializes `name` using `super()` and adds `age`.  
+   - `getAge()` returns the `age`.
 
-<img width="323" height="198" alt="image" src="https://github.com/user-attachments/assets/6f46842a-96f1-4a94-8891-7e70e4051b16" />
+3. **Grandchild Class (inherits Child)**  
+   - `__init__(name, age, location)` initializes `name` and `age` using `super()` and adds `location`.  
+   - `getLocation()` returns the `location`.
+
+4. **Input & Output**  
+   - Take user input for name, age, and location.  
+   - Create an instance of `Grandchild`.  
+   - Print all details using class methods.
+
+## Program
+~~~
+class Parent:
+   def __init__(self,name):
+     self.name = name
+   def getName(self):
+     return self.name
+class Child(Parent):
+   def __init__(self,name,age):
+     Parent.__init__(self,name)
+     self.age = age
+   def getAge(self):
+     return self.age
+class Grandchild(Child):
+   def __init__(self,name,age,id):
+     Child.__init__(self,name,age)
+     self.id=id
+   def getid(self):
+     return self.id
+name=input()
+age=int(input())
+id=int(input())
+gc = Grandchild(name,age,id)
+print(gc.getName(), gc.getAge(), gc.getid())
+~~~
+## Sample Output
+
+<img width="593" height="200" alt="image" src="https://github.com/user-attachments/assets/eef0b099-13db-488a-8158-d4e92f2ee4fe" />
+
 
